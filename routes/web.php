@@ -11,10 +11,10 @@
 |
 */
  
-// Route::get('/', function () {
-//     // return view('welcome');
-//     return 'Helo peolpe'; 
-// });
+Route::get('/', function () {
+    return view('welcome');
+    // return 'Helo peolpe'; 
+});
 
 // Route::get('/about', function () {
 //     return view('pages.about'); 
@@ -24,6 +24,9 @@
 Route::get('/home', 'PagesController@index'); 
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
+
+Route::resource('posts', 'PostsController');
+
     
 
 
