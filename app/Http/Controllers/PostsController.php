@@ -7,6 +7,13 @@ use App\Post;
 
 class PostsController extends Controller
 {
+    //place auth here
+    public function __construct()
+    {
+        //'except' allows an array of index and show views to be accessed
+        $this->middleware('auth', ['except' => ['show', 'index']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class PostsController extends Controller
     public function index()
     {
         // $posts = Post::all();
-        $posts = Post::orderBy('created_at', 'desc')->paginate(3);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
         // $posts = Post::orderBy('created_at', 'desc')->get();
         // $posts = Post::orderBy('title', 'desc')->take(1)->get();
         // $post =  Post::where('title', 'Post Three')->get();
@@ -48,6 +55,8 @@ class PostsController extends Controller
         //create post here
         $post = new Post;
         $post->title = $request->title;
+        $post->user_id = auth()->user()->id;
+        
         $post->description = $request->description;$post->save();
 
         return redirect('/posts')->with('success', 'Post has been created successfully!');

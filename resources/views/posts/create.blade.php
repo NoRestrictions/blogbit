@@ -10,7 +10,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control" name="description" placeholder="Enter Description"></textarea>
+                <textarea class="form-control" name="description" rows="5" placeholder="Enter Description"></textarea>
             </div>
             
             <input type="submit" class="btn btn-primary" value="Create Post">

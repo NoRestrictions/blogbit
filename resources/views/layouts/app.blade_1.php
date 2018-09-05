@@ -22,7 +22,14 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        {{--  <main class="py-4">  --}}
+             {{--  @include('includes.navbar')
+             <br><br>
+                <div class="container">
+                    @include('includes.statusmessage')
+                    @yield('content')  --}}
+
+                    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'BlogBit') }}
@@ -83,5 +90,8 @@
                 </div>
             </div>
         </nav>
-
-        
+                </div>
+        {{--  </main>  --}}
+    </div>
+</body>
+</html>
