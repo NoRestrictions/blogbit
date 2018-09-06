@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Auth;
 
 class PostsController extends Controller
 {
@@ -84,6 +85,12 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+        //Prevent unauthorized user to edit post
+        if(Auth::user()->id !== $post->user_id) {
+            //return redirect('/posts');
+            return redirect('/posts')->with('error', 'Not Allowed!');
+            
+        }
         return view('posts.edit')->with('post', $post);
     }
 
