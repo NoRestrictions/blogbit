@@ -7,12 +7,15 @@
         <hr><br>
         <small>Written on:{{$post->created_at}} by {{$post->user->name}} </small>
         <hr> 
-        <a class="btn btn-primary" href="/posts/{{$post->id}}/edit">Edit</a>
-        
-        <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-            {{csrf_field()}}
-            {{method_field('DELETE')}}
-            <input class="btn btn-secondary pull-right" type="submit" value="Delete"/>
-        </form> 
-                       
+        @if(!Auth::guest())
+            @if(Auth::user()->id == $post->user_id)
+            <a class="btn btn-primary" href="/posts/{{$post->id}}/edit">Edit</a>
+            
+            <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                {{csrf_field()}}
+                {{method_field('DELETE')}}
+                <input class="btn btn-secondary pull-right" type="submit" value="Delete"/>
+            </form>
+            @endif 
+        @endif             
 @endsection
