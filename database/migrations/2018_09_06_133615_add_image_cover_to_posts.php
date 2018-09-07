@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserIdToPost extends Migration
+class AddImageCoverToPosts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class AddUserIdToPost extends Migration
      */
     public function up()
     {
-        
         Schema::table('posts', function($table) {
-            $table->integer('user_id');
+            $table->string('image_cover');
         });
         
     }
- 
+
     /**
      * Reverse the migrations.
      *
@@ -27,10 +26,8 @@ class AddUserIdToPost extends Migration
      */
     public function down()
     {
-        
         Schema::table('posts', function($table) {
-            $table->dropColumn('user_id');
+            $table->dropColumn('image_cover');
         });
-        
     }
 }
